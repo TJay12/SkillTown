@@ -1,0 +1,21 @@
+{
+  "name": "TJ",
+  "skill": "fishing",
+  "skill level": 6,
+  "skill progress": 0,
+  "strength": 16,
+  "stamina": 90,
+  "luck": 0,
+  "inventory": {
+    "fish": {
+      "quantity": 20,
+      "category": "consumable",
+      "effect": "stamina boost",
+      "effect value": 10
+    },
+    "golden fish": {
+      "quantity": 6,
+      "category": "valuable"
+    }
+  }
+}

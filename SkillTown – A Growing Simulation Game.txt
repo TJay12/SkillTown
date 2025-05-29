@@ -1,0 +1,17 @@
+🎯 Core Concept
+
+You’re building a small simulation where the player starts as a character in a tiny, undeveloped town.
+Over time, they can learn skills, gather resources, interact with locations, and upgrade their town.
+Each new feature introduces a new programming concept.
+
+🧪 Basic Functionality (Phase 1 Goals)
+✅ Character Creation
+    Enter name, choose a starting skill (woodcutting or fishing).
+    Assign starting stats (e.g., strength, stamina, luck).
+✅ Basic Activity Loop
+    Let the player choose an activity.
+    Perform a simple random outcome (e.g., “You caught a fish!”).
+    Add item to inventory.
+✅ View Stats/Inventory
+    Print current stats.
+    Show items gathered so far.
