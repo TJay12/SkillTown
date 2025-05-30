@@ -1,21 +1,22 @@
 {
   "name": "TJ",
-  "skill": "fishing",
-  "skill level": 6,
-  "skill progress": 0,
-  "strength": 16,
-  "stamina": 90,
+  "skills": {
+    "woodcutting": {
+      "level": 3,
+      "progress": 2
+    }
+  },
+  "strength": 13,
+  "stamina": 50,
   "luck": 0,
   "inventory": {
-    "fish": {
-      "quantity": 20,
-      "category": "consumable",
-      "effect": "stamina boost",
-      "effect value": 10
+    "log": {
+      "quantity": 13,
+      "category": "crafting"
     },
-    "golden fish": {
-      "quantity": 6,
-      "category": "valuable"
+    "ancient log": {
+      "quantity": 4,
+      "category": "crafting"
     }
   }
 }

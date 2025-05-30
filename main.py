@@ -2,38 +2,54 @@ from character import new_character_setup, save_character, load_saved_character,
 import activities
 
 load_save = input("Load saved character(y/n): ")
-if load_save == "y":
-    character = load_saved_character()
-    skill = character["skill"]
-    print(f"Welcome back to Skill Town {character['name']}")
-elif load_save == "n":
-    character = new_character_setup()
-    skill = character["skill"]
-    print(f"Welcome to Skill Town {character['name']}")
+while True:
+    if load_save == "y":
+        character = load_saved_character()
+        print(f"Welcome back to Skill Town {character['name']}")
+        break
+    elif load_save == "n":
+        character = new_character_setup()
+        print(f"Welcome to Skill Town {character['name']}")
+        break
+    else:
+        print(f"{load_save} is not an Option!")
+
+name = character["name"]
+skills = character["skills"]
+inventory = character["inventory"]
 
 while True:
     print(f"(S)kill Activity, (C)haracter Stats, (I)nventory, (U)se Item (Q)uit")
     action = input("Action: ").lower()
     if action == "s":
-        if skill == "fishing":
+        for skill in skills:
+            lvl = skills[skill]["level"]
+            print(f"{skill} level {lvl}")
+        select_skill = input("Which Activity: ").lower()
+        if select_skill == "fishing":
             print("Fishing ...")
             while True:
-                activities.fishing(character)
+                activities.fishing(character, skills, inventory)
 
-                back = input("(B)ack").lower()
+                back = input("(B)ack ").lower()
                 if back == "b":
                     break
-        elif skill == "woodcutting":
+        elif select_skill == "woodcutting":
             print("Woodcutting")
             while True:
-                activities.woodcutting(character)
-                back = input("(B)ack").lower()
+                activities.woodcutting(character, skills, inventory)
+                back = input("(B)ack ").lower()
                 if back == "b":
                     break
     elif action == "c":
+        print(f"{name}'s Current Stats:")
         for stat, value in character.items():
-            if stat != "inventory":
-                print(f"{stat} : {value}")
+            if stat != "inventory" and stat != "skills":
+                print(f" - {stat} : {value}")
+        print("\nSkills:")
+        for skill in skills:
+            lvl = skills[skill]["level"]
+            print(f" - {skill} level {lvl}")
 
     elif action == "i":
         for item in character["inventory"].keys():
