@@ -1,0 +1,6 @@
+{
+  "name": "fishing",
+  "stamina cost": "5",
+  "main item": "fish",
+  "special item": "golden fish"
+}

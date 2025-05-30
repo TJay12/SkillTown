@@ -6,8 +6,8 @@ def rand_num():
     return chance
 
 # <--- Fishing Function --->
-def fishing(character, skills, inventory):
-    skill = skills["fishing"]
+def skill_action(character, select_skill, skills, inventory):
+    skill = skills[select_skill]
     chance = rand_num()
     # gives a 10% chance of catching a Golden Fish
     if chance % 7 == 0:

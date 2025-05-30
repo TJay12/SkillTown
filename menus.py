@@ -18,24 +18,14 @@ def main_menu(character, name, skills, inventory):
                 print(f"{skill} level {lvl}")
             # Store player selected skill in variable
             select_skill = input("Which Activity: ").lower()
-            if select_skill == "fishing":
-                print("Fishing ...")
-                # Run fishing function until player exits
-                while True:
-                    activities.fishing(character, skills, inventory)
-                    # Option to exit
-                    back = input("(B)ack ").lower()
-                    if back == "b":
-                        break
-            elif select_skill == "woodcutting":
-                print("Woodcutting")
-                # Run woodcutting function until player exits
-                while True:
-                    activities.woodcutting(character, skills, inventory)
-                    # Option to exit
-                    back = input("(B)ack ").lower()
-                    if back == "b":
-                        break
+            print(f"{select_skill} ...")
+            # Run skill action function until player exits
+            while True:
+                activities.skill_action(character, select_skill, skills, inventory)
+                # Option to exit
+                back = input("(B)ack ").lower()
+                if back == "b":
+                    break
             else:
                 print(f"{select_skill} is not an Option!")
         # Character Stats
