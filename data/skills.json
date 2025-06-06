@@ -1,0 +1,17 @@
+{
+  "Fishing": {
+    "name": "fishing",
+    "tool": "fishing rod",
+    "stamina cost": "5",
+    "main item": "fish",
+    "special item": "golden fish"
+  },
+
+  "Woodcutting": {
+    "name": "woodcutting",
+    "tool": "axe",
+    "stamina cost": "5",
+    "main item": "log",
+    "special item": "ancient log"
+  }
+}

@@ -26,8 +26,8 @@ def main_menu(character, name, skills, inventory):
                 back = input("(B)ack ").lower()
                 if back == "b":
                     break
-            else:
-                print(f"{select_skill} is not an Option!")
+                else:
+                    print(f"{select_skill} is not an Option!")
         # Character Stats
         elif action == "c":
             print(f"{name}'s Current Stats:")

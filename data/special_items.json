@@ -1,0 +1,14 @@
+{
+  "golden_fish": {
+    "category": ["consumable", "valuable"],
+    "effect": "stamina up",
+    "effect value": "50",
+    "value": "200"
+  },
+  "ancient_log": {
+    "category": "valuable",
+    "effect": "none",
+    "effect value": "none",
+    "value": "350"
+  }
+}

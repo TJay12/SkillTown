@@ -1,0 +1,14 @@
+{
+  "fish": {
+    "category": "consumable",
+    "effect": "stamina up",
+    "effect value": "10",
+    "value": "2"
+  },
+  "log": {
+    "category": "crafting",
+    "effect": "none",
+    "effect value": "none",
+    "value": "1"
+  }
+}
