@@ -6,12 +6,17 @@
     "main item": "fish",
     "special item": "golden fish"
   },
-
   "Woodcutting": {
     "name": "woodcutting",
     "tool": "axe",
     "stamina cost": "5",
     "main item": "log",
     "special item": "ancient log"
+  },
+  "Mining": {
+    "tool": "pickaxe",
+    "stamina cost": "10",
+    "main item": "stone",
+    "special item": "gold"
   }
 }

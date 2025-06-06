@@ -1,56 +1,79 @@
-import json
+import json_util as j
 from pathlib import Path
 
 savegames = Path("data/savegames")
-crafting = Path("data/crafting")
-items = Path("data/items")
-skills = Path("data/skills")
+skills = Path("data/skills.json")
+main_items = Path("data/main_items.json")
+special_items = Path("data/special_items.json")
+crafting = Path("data/crafting_recipies.json")
+
+# <--- Add Entry To Skills File --->
+def add_to_skills():
+    path = skills
+    data = j.load_file(path)
+
+    skill_name = input("Skill Name: ").lower()
+    tool = input("Tool: ").lower()
+    stamina_cost = input("Stamina Cost: ").lower()
+    main_item = input("Main Item: ").lower()
+    special_item = input("Special Item: ").lower()
+    skill_info = {"tool": tool, "stamina cost": stamina_cost, "main item": main_item,
+                  "special item": special_item}
+    data[skill_name] = skill_info
+
+    j.save_file(path, data)
+    print(f"{skill_name} added to {path}")
+
+# <--- Add Entry To Items Files --->
+def add_to_main_items():
+    path = main_items
+    data = j.load_file(path)
+
+    item_key = input("Item: ").lower()
+    category = input("Category: ").lower()
+    effect = input("Special Effect: ").lower()
+    effect_value = input("Special Effect Value: ").lower()
+    value = input("Value: ").lower()
+    item_info = {"category": category, "effect": effect,
+                 "effect value": effect_value, "value": value}
+    data[item_key] = item_info
+
+    j.save_file(path, data)
+    print(f"{item_key} added to {path}")
+
+def add_to_special_items():
+    path = special_items
+    data = j.load_file(path)
+
+    item_key = input("Item: ").lower()
+    category = input("Category: ").lower()
+    effect = input("Special Effect: ").lower()
+    effect_value = input("Special Effect Value: ").lower()
+    value = input("Value: ").lower()
+    item_info = {"category": category, "effect": effect,
+                 "effect value": effect_value, "value": value}
+    data[item_key] = item_info
+
+    j.save_file(path, data)
+    print(f"{item_key} added to {path}")
 
 # <--- Add Entry To Crafting File--->
 def add_to_crafting():
-    filename = input("Filename: ") + ".json"
-    path = crafting / filename
-    with path.open("r") as file:
-        data = json.load(file)
+    path = crafting
+    data = j.load_file(path)
 
-        key = input("Key: ").lower()
-        value = input("Value: ").lower()
-        data[key] = value
+    recipe_name = input("Recipe Name: ").lower()
+    comp1 = input("Component 1: ").lower()
+    comp1_qty = input("Component 1 Quantity: ").lower()
+    comp2 = input("Component 2: ").lower()
+    comp2_qty = input("Component 2 Quantity: ").lower()
+    value = {comp1: comp1_qty, comp2: comp2_qty}
+    data[recipe_name] = value
 
-    with path.open("w") as file:
-        json.dump(data, file, indent=2)
-    print(f"{key}: {value} added to {path}")
-
-# <--- Add Entry To Item File --->
-def add_to_items():
-    filename = input("Filename: ") + ".json"
-    path = items / filename
-    with path.open("r") as file:
-        data = json.load(file)
-
-        key = input("Key: ").lower()
-        value = input("Value: ").lower()
-        data[key] = value
-
-    with path.open("w") as file:
-        json.dump(data, file, indent=2)
-    print(f"{key}: {value} added to {path}")
-
-# <--- Add Entry To Skill File --->
-def add_to_skills():
-    filename = input("Filename: ") + ".json"
-    path = skills / filename
-    with path.open("r") as file:
-        data = json.load(file)
-
-        key = input("Key: ").lower()
-        value = input("Value: ").lower()
-        data[key] = value
-
-    with path.open("w") as file:
-        json.dump(data, file, indent=2)
-    print(f"{key}: {value} added to {path}")
+    j.save_file(path, data)
+    print(f"{recipe_name} added to {path}")
 
 # add_to_skills()
-add_to_items()
+# add_to_main_items()
+# add_to_special_items()
 # add_to_crafting()

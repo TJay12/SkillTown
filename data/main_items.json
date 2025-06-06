@@ -10,5 +10,11 @@
     "effect": "none",
     "effect value": "none",
     "value": "1"
+  },
+  "twig": {
+    "category": "crafting",
+    "effect": "none",
+    "effect value": "none",
+    "value": "0.1"
   }
 }
