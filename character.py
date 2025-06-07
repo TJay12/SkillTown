@@ -1,4 +1,7 @@
-from json_util import load_saved_character
+import util as j
+from pathlib import Path
+
+savegames = Path("data/savegames/save_file.json")
 
 # <--- Initial Game Load --->
 def current_character():
@@ -7,7 +10,7 @@ def current_character():
     while True:
         # Continue from last saved character
         if load_save == "y":
-            character = load_saved_character()
+            character = j.load_file(savegames)
             print(f"Welcome back to Skill Town {character['name']}")
             return character
         # Start a new character
@@ -31,9 +34,13 @@ def new_character_setup():
         # Store their choice in a variable to add to character dictionary
         if choose_starting_skill == "w":
             starting_skill = "woodcutting"
+            starting_tool = "axe"
+            starting_item = "log"
             break
         elif choose_starting_skill == "f":
             starting_skill = "fishing"
+            starting_tool = "fishing rod"
+            starting_item = "fish"
             break
         else:
             print("Invalid Option, Stating skills are \n - (w) Woodcutting \n - (f) Fishing")
@@ -53,24 +60,18 @@ def new_character_setup():
         "strength": 10,
         "stamina": 50,
         "luck": 0,
+        # Populate character inventory based on their chosen starting skill
         "inventory": {
-
+            starting_tool: 1,
+            starting_item: 0
         }
     }
 
-    # Populate character inventory based on their chosen starting skill
-    if starting_skill == "woodcutting":
-        # Log for woodcutting
-        new_character["inventory"]["log"] = {"quantity": 0, "category": "crafting"}
-    elif starting_skill == "fishing":
-        # Fish for fishing
-        new_character["inventory"]["fish"] = {"quantity": 0, "category": "consumable",
-                                              "effect": "stamina up", "effect value": 10}
     # Display their chosen Name, starting skill and initial inventory
-    print(f"Character Created {player_name}, you start off with knowledge of {starting_skill}")
-    for item in new_character["inventory"].keys():
-        qty = new_character["inventory"][item]["quantity"]
-        print(item, qty)
+    print(f"Character Created {player_name}, you start off with a {starting_tool} and "
+          f"knowledge of {starting_skill}")
+    for item, qty in new_character["inventory"].items():
+        print(f"{item}: {qty}")
     # Return new character dictionary to main
     return new_character
 

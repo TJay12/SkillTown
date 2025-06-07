@@ -1,13 +1,17 @@
-import activities
-from json_util import save_character
 from character import use_consumable
+import util as j
+from pathlib import Path
+import actions as a
+
+savegame = Path("data/savegames/save_file.json")
 
 # <--- Main Gameplay Menu --->
 def main_menu(character, name, skills, inventory):
     # Loop back to options unless quit
     while True:
         # Display menu options to player
-        print(f"(S)kill Activity, (C)haracter Stats, (I)nventory, (U)se Item (Q)uit")
+        print(f"(S)kill Activity, (C)haracter Stats, (I)nventory, "
+              f"(U)se Item (Q)uit")
         # Store player choice in value
         action = input("Action: ").lower()
         # Skill Activity
@@ -16,18 +20,8 @@ def main_menu(character, name, skills, inventory):
             for skill in skills:
                 lvl = skills[skill]["level"]
                 print(f"{skill} level {lvl}")
-            # Store player selected skill in variable
-            select_skill = input("Which Activity: ").lower()
-            print(f"{select_skill} ...")
-            # Run skill action function until player exits
-            while True:
-                activities.skill_action(character, select_skill, skills, inventory)
-                # Option to exit
-                back = input("(B)ack ").lower()
-                if back == "b":
-                    break
-                else:
-                    print(f"{select_skill} is not an Option!")
+            a.perform_skill(inventory)
+
         # Character Stats
         elif action == "c":
             print(f"{name}'s Current Stats:")
@@ -43,8 +37,7 @@ def main_menu(character, name, skills, inventory):
         # Display Inventory
         elif action == "i":
             # Display inventory items and quantity from nested dict inventory
-            for item in inventory:
-                qty = inventory[item]["quantity"]
+            for item, qty in inventory.items():
                 print(f"{item} : {qty}")
         # Use Item From Inventory
         elif action == "u":
@@ -61,7 +54,7 @@ def main_menu(character, name, skills, inventory):
             save = input("Save Character(y/n): ")
             # Saves character to .json file then close
             if save == "y":
-                save_character(character)
+                j.save_file(savegame, character)
                 print(f"{character['name'].title()} has been saved. See you next time!")
                 break
             # Close without saving character (New character would have to be created on next play)

@@ -1,7 +1,7 @@
-import json_util as j
+import util as j
 from pathlib import Path
 
-savegames = Path("data/savegames")
+savegames = Path("data/savegames/save_file.json")
 skills = Path("data/skills.json")
 main_items = Path("data/main_items.json")
 special_items = Path("data/special_items.json")

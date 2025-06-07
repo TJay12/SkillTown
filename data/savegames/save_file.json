@@ -10,11 +10,7 @@
   "stamina": 50,
   "luck": 0,
   "inventory": {
-    "log": {
-      "quantity": 13
-    },
-    "ancient log": {
-      "quantity": 4
-    }
+    "log": 23,
+    "ancient log": 7
   }
 }
